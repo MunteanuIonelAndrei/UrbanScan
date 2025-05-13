@@ -1,10 +1,21 @@
 # UrbanScan: City Problem Management System with Drone Surveillance
 
+
+🚀 Introducing UrbanScan – The Future of City Management is Here! 🌆📡
+
+Say goodbye to overlooked city issues and slow responses! With drone surveillance and AI-powered insights, UrbanScan detects potholes, illegal dumping, damaged infrastructure, and more – all in real-time! 🛣️🕵️‍♂️⚠️
+
+🎥 Watch the Demo Video Now to see how our smart system is making cities cleaner, safer, and more efficient! 🏙️🤖✨
+
+👉 [YouTube Link](https://youtu.be/h-04P4i-g5Q) 
+
+#SmartCity #UrbanScan #DroneTech #CitySurveillance #Innovation 🚁💡🌍
+
+## Project Overview
+
 A comprehensive city management system consisting of two main components:
 1. **CityProject** - Web application for citizens to report city problems and for officials to manage reports
 2. **BothUI** - Drone control and surveillance system that integrates with the main platform
-
-## Project Overview
 
 UrbanScan provides an end-to-end solution for:
 - Citizens to report city problems with photos and locations
