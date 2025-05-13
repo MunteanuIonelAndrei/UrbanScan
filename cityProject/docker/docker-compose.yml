@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: city_reporter_postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ../.env
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-andrei}
+      - POSTGRES_USER=${POSTGRES_USER:-andrei}
+      - POSTGRES_DB=${POSTGRES_DB:-city_reporter}
+    ports:
+      - "5435:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U andrei"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  postgres_data:

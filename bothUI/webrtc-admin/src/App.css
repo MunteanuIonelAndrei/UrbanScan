@@ -1,0 +1,44 @@
+/* App.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background-color: #121212;
+}
+
+#root {
+  height: 100%;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Set height for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .app-container {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Reset default button styles */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}

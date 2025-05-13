@@ -1,0 +1,1210 @@
+/* WebRTCAdmin.css */
+
+.webrtc-admin {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #121212;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+/* Status bar */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.left-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mode-toggle, .led-toggle, .map-toggle, .thermal-toggle, .video-mode-toggle, .capture-button, .record-button, .city-monitoring-button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.7rem; /* Reduced padding to make buttons narrower */
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.mode-toggle:hover, .led-toggle:hover, .map-toggle:hover, .thermal-toggle:hover, .video-mode-toggle:not(:disabled):hover, .capture-button:not(:disabled):hover, .record-button:not(:disabled):hover {
+  background-color: #34495e;
+}
+
+.video-mode-toggle:disabled, .capture-button:disabled, .record-button:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.capture-button {
+  background-color: #c0392b;
+}
+
+.capture-button:not(:disabled):hover {
+  background-color: #e74c3c;
+}
+
+.capture-button.capturing {
+  background-color: #e67e22;
+  animation: pulse 1.5s infinite;
+}
+
+/* Video recording control */
+.video-recording-control {
+  display: flex;
+  align-items: center;
+}
+
+.record-button {
+  background-color: #8e44ad;
+  white-space: nowrap;
+}
+
+.record-button:not(:disabled):hover {
+  background-color: #9b59b6;
+}
+
+.record-button.recording {
+  background-color: #c0392b;
+  animation: pulse 1.5s infinite;
+}
+
+/* Recording Panel Styling */
+.recording-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fps-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fps-selection-header {
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.fps-options-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.fps-option {
+  background-color: rgba(52, 73, 94, 0.7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fps-option:hover {
+  background-color: #3498db;
+}
+
+.fps-option.selected {
+  background-color: #8e44ad;
+  font-weight: bold;
+}
+
+.recording-info {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 0.8rem;
+  color: #bdc3c7;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.recording-info p {
+  margin: 0.3rem 0;
+}
+
+.start-recording-button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.start-recording-button:hover:not(:disabled) {
+  background-color: #e74c3c;
+}
+
+.start-recording-button:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Legacy FPS input styling - keeping for reference */
+.fps-input-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 0 0.5rem;
+  margin-left: 0.5rem;
+  height: 100%;
+}
+
+.fps-input {
+  width: 40px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-align: right;
+  padding: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.fps-input:focus {
+  outline: none;
+}
+
+.fps-input:disabled {
+  opacity: 0.6;
+}
+
+.fps-label {
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.recording-active {
+  animation: blink 1.5s infinite;
+}
+
+.recording-error {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.led-toggle {
+  background-color: #27ae60;
+}
+
+.led-toggle:hover {
+  background-color: #2ecc71;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.heartbeat-error {
+  color: #e74c3c;
+  margin-left: 1rem;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+.capture-success {
+  font-weight: bold;
+  animation: fadeOut 3s forwards;
+}
+
+.capture-error {
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Video container */
+.video-container {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background-color: black;
+}
+
+.drone-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* Video display modes */
+.video-container.regular .regular-video-wrapper,
+.video-container.thermal .thermal-video-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.video-container.side-by-side {
+  display: flex;
+  flex-direction: row;
+}
+
+.video-container.side-by-side .regular-video-wrapper,
+.video-container.side-by-side .thermal-video-wrapper {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.video-container.pip {
+  position: relative;
+}
+
+.video-container.pip .regular-video-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.video-container.pip .thermal-video-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30%;
+  height: 30%;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.no-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* Controls overlay */
+.controls-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicking through to the video */
+}
+
+/* Manual controls - dual stick layout */
+.manual-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.control-stick {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3); /* More transparent background */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  pointer-events: all;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0 1rem; /* Add horizontal margin to ensure sticks are inside the screen */
+}
+
+.control-button {
+  position: relative;
+  background-color: rgba(52, 152, 219, 0.4); /* More transparent buttons */
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: auto;
+}
+
+.control-button:hover {
+  background-color: rgba(52, 152, 219, 0.6);
+}
+
+.control-button:active, .control-button.active {
+  transform: scale(0.9);
+  background-color: rgba(41, 128, 185, 0.7);
+}
+
+.key-hint {
+  font-size: 0.7rem;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* Button positioning within sticks */
+.control-button.throttle-up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.control-button.yaw-right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.control-button.throttle-down {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.control-button.yaw-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.control-button.pitch-forward {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.control-button.roll-right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.control-button.pitch-backward {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.control-button.roll-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* Auto controls */
+.auto-controls {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  pointer-events: all;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  max-width: 200px;
+}
+
+/* Updated CSS for LED Panel in WebRTCAdmin.css */
+
+/* LED Panel */
+.led-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 320px;
+  z-index: 200;
+  pointer-events: all;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.led-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.led-panel-header h3 {
+  margin: 0;
+  color: white;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+/* Improved Color Wheel CSS */
+
+.color-wheel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.color-wheel {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  /* Create a true circular gradient with many color stops */
+  background: conic-gradient(
+    #ff0000, #ff4000, #ff8000, #ffbf00, #ffff00, 
+    #bfff00, #80ff00, #40ff00, #00ff00, #00ff40, 
+    #00ff80, #00ffbf, #00ffff, #00bfff, #0080ff,
+    #0040ff, #0000ff, #4000ff, #8000ff, #bf00ff,
+    #ff00ff, #ff00bf, #ff0080, #ff0040, #ff0000
+  );
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* Clean border */
+  border: none;
+  /* Ensure perfect circle */
+  overflow: hidden;
+  /* Use transform-style to ensure 3D rendering for smoother edges */
+  transform-style: preserve-3d;
+  /* Add a subtle transition for smoother color changes */
+  transition: box-shadow 0.2s;
+}
+
+/* On hover, add a subtle glow effect */
+.color-wheel:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Improved radial gradient overlay for saturation */
+.color-wheel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.5) 30%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none; /* Make sure clicks pass through to the wheel */
+}
+
+/* Improved color indicator */
+.color-indicator {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid white;
+  pointer-events: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  top: 50%;
+  left: 50%;
+  transform: translate(0, 0);
+  z-index: 10;
+}
+/* Current color display */
+.current-color {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.color-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rgb-display {
+  color: white;
+  flex: 1;
+  text-align: left;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Manual RGB input fields */
+.rgb-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.rgb-input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.rgb-input-field label {
+  color: white;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.rgb-input-field input {
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+  font-family: monospace;
+}
+
+/* Preset color buttons */
+.led-color-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.led-color-button {
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.7rem;
+}
+
+.led-color-button:hover {
+  transform: scale(1.05);
+}
+
+.led-apply-button {
+  padding: 0.6rem;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #3498db;
+  color: white;
+}
+
+.led-apply-button:hover {
+  background-color: #2980b9;
+}
+
+/* Camera Tilt Controls */
+.camera-tilt-controls {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  pointer-events: all;
+  z-index: 100;
+}
+
+.camera-tilt-button {
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(52, 152, 219, 0.5);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.camera-tilt-button:hover {
+  background-color: rgba(52, 152, 219, 0.8);
+}
+
+.camera-tilt-button:active {
+  transform: scale(0.95);
+}
+
+.auto-button {
+  background-color: rgba(46, 204, 113, 0.4); /* More transparent buttons */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  width: 100%;
+}
+
+.auto-button:hover {
+  background-color: rgba(46, 204, 113, 0.6);
+}
+
+.auto-button:active {
+  transform: scale(0.95);
+  background-color: rgba(39, 174, 96, 0.7);
+}
+
+/* Special buttons */
+.auto-button.arm {
+  background-color: rgba(230, 126, 34, 0.5);
+}
+
+.auto-button.arm:hover {
+  background-color: rgba(230, 126, 34, 0.7);
+}
+
+.auto-button.takeoff {
+  background-color: rgba(52, 152, 219, 0.5);
+}
+
+.auto-button.takeoff:hover {
+  background-color: rgba(52, 152, 219, 0.7);
+}
+
+.auto-button.land {
+  background-color: rgba(231, 76, 60, 0.5);
+}
+
+.auto-button.land:hover {
+  background-color: rgba(231, 76, 60, 0.7);
+}
+
+.auto-button.rtl {
+  background-color: rgba(155, 89, 182, 0.5);
+}
+
+.auto-button.rtl:hover {
+  background-color: rgba(155, 89, 182, 0.7);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .status-bar {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .mode-toggle {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .manual-controls {
+    padding: 1rem;
+  }
+  
+  .control-stick {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .control-button {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+  
+  .key-hint {
+    font-size: 0.6rem;
+  }
+  
+  .auto-controls {
+    left: 0.5rem;
+    padding: 0.7rem;
+    gap: 0.5rem;
+    max-width: 150px;
+  }
+  
+  .auto-button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .control-stick {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .control-button {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .auto-controls {
+    max-width: 120px;
+  }
+  
+  .auto-button {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Ensure fullscreen on iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .webrtc-admin {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Latency specific styles */
+.map-toggle {
+  background-color: #2980b9;
+}
+
+.map-toggle:hover {
+  background-color: #3498db;
+}
+
+.location-display {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+/* Enhanced Map Panel CSS with stable element rendering */
+
+.map-panel, .thermal-panel, .recording-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+  height: 90vh;
+  max-height: 800px;
+  overflow-y: auto;
+  z-index: 200;
+  padding: 1rem;
+  pointer-events: all;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.thermal-panel {
+  max-width: 400px;
+}
+
+.recording-panel {
+  max-width: 450px;
+  max-height: 400px;
+}
+
+.map-header, .thermal-panel-header, .recording-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.map-header h3, .thermal-panel-header h3, .recording-panel-header h3 {
+  margin: 0;
+  color: white;
+}
+
+/* Thermal settings panel */
+.thermal-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.setting-group label {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.setting-group select, 
+.setting-group input {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: white;
+}
+
+.setting-group input[type="range"] {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  background: rgba(52, 152, 219, 0.3);
+  border-radius: 4px;
+  outline: none;
+  padding: 0;
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3498db;
+  cursor: pointer;
+}
+
+.setting-group input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3498db;
+  cursor: pointer;
+  border: none;
+}
+
+/* Range markers for temperature slider */
+.range-markers {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3px;
+}
+
+.range-markers span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.rotation-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rotation-buttons button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.rotation-buttons button:hover {
+  background-color: #2980b9;
+}
+
+.toggle-button button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.toggle-button button:hover {
+  background-color: #c0392b;
+}
+
+.toggle-button button.active {
+  background-color: #2ecc71;
+}
+
+.toggle-button button.active:hover {
+  background-color: #27ae60;
+}
+
+/* Detection mode buttons */
+.detection-mode-buttons {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.detection-mode-buttons button {
+  flex: 1;
+  background-color: #7f8c8d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+}
+
+.detection-mode-buttons button:hover {
+  background-color: #95a5a6;
+}
+
+.detection-mode-buttons button.active {
+  background-color: #3498db;
+}
+
+.detection-mode-buttons button.active:hover {
+  background-color: #2980b9;
+}
+
+/* Controls for the map interface */
+.map-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 1rem;
+  gap: 0.8rem;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.location-details span {
+  color: white;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.2em;
+}
+
+/* New comparison container with fixed structure */
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Each comparison row has fixed height */
+.ground-difference-row,
+.height-above-ground-row,
+.altitude-difference-row {
+  height: 1.4em;
+  display: flex;
+  align-items: center;
+}
+
+/* Blue text for ground difference */
+.ground-difference {
+  color: #3498db;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Green text for height above ground */
+.height-above-ground {
+  color: #2ecc71;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Yellow text for altitude difference */
+.altitude-difference {
+  color: #f1c40f;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Gray placeholder text */
+.placeholder-text {
+  color: #7f8c8d;
+  font-style: italic;
+  font-family: monospace;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.altitude-control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.altitude-control label {
+  color: white;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+.altitude-control input {
+  width: 80px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+  margin-right: auto;
+}
+
+.altitude-explanation {
+  font-size: 0.8rem;
+  color: #bdc3c7;
+  font-style: italic;
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
+.altitude-explanation p {
+  margin: 0;
+  padding: 0;
+}
+
+.goto-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-end;
+  white-space: nowrap;
+  min-width: 200px;
+  height: 45px; /* Fixed height */
+}
+
+.goto-button:hover {
+  background-color: #c0392b;
+}
+
+.goto-button:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+/* Make the map container responsive */
+.leaflet-container {
+  border-radius: 4px;
+  overflow: hidden;
+  height: 400px !important;
+}
